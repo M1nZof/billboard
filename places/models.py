@@ -2,6 +2,7 @@ from django.db import models
 
 
 class PlaceImage(models.Model):
+    description = models.CharField(max_length=200, verbose_name='Описание картинки')
     image = models.ImageField(verbose_name='Картинка')
 
 
