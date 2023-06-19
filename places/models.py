@@ -13,6 +13,4 @@ class Place(models.Model):
     description_long = models.TextField(verbose_name='Описание')
     lng = models.FloatField(verbose_name='Долгота')
     lat = models.FloatField(verbose_name='Широта')
-
-
-
+    slug = models.CharField(max_length=200, verbose_name='Латинизированное название локации')
