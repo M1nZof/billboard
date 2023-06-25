@@ -30,15 +30,10 @@ def index(request):
             'properties': {
                 'title': place.title,
                 'placeId': place.pk,
-                'detailsUrl': f'static/places/{place.slug}.json'
+                'detailsUrl': f'places/{place.pk}'
             }
         }
         rendered_places['data']['features'].append(place_properties)
-
-        detailsUrl = serialize_place(place)
-
-        with open(os.path.join(BASE_DIR, 'static', 'places', f'{place.slug}.json'), 'w') as file:
-            file.write(json.dumps(detailsUrl))
 
     context = rendered_places
 
@@ -54,7 +49,7 @@ def place_page(request, place_id):
 def serialize_place(place):
     return {
         'title': place.title,
-        'imgs': place.imgs.image.url,
+        'imgs': [place.imgs.image.url],
         'description_short': place.description_short,
         'description_long': place.description_long,
         'coordinates': {
