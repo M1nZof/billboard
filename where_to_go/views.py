@@ -1,7 +1,7 @@
 import json
 import os
 
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.template import loader
 from django.shortcuts import get_object_or_404
 
@@ -35,16 +35,7 @@ def index(request):
         }
         rendered_places['data']['features'].append(place_properties)
 
-        detailsUrl = {
-            'title': place.title,
-            'imgs': place.imgs.image.url,
-            'description_short': place.description_short,
-            'description_long': place.description_long,
-            'coordinates': {
-                'lng': place.lng,
-                'lat': place.lat
-            }
-        }
+        detailsUrl = serialize_place(place)
 
         with open(os.path.join(BASE_DIR, 'static', 'places', f'{place.slug}.json'), 'w') as file:
             file.write(json.dumps(detailsUrl))
@@ -57,4 +48,17 @@ def index(request):
 
 def place_page(request, place_id):
     place = get_object_or_404(Place, pk=place_id)
-    return HttpResponse(place.title)
+    return JsonResponse(serialize_place(place))
+
+
+def serialize_place(place):
+    return {
+        'title': place.title,
+        'imgs': place.imgs.image.url,
+        'description_short': place.description_short,
+        'description_long': place.description_long,
+        'coordinates': {
+            'lng': place.lng,
+            'lat': place.lat
+        }
+    }
