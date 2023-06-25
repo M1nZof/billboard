@@ -3,6 +3,7 @@ import os
 
 from django.http import HttpResponse
 from django.template import loader
+from django.shortcuts import get_object_or_404
 
 from places.models import Place
 from where_to_go.settings import BASE_DIR
@@ -52,3 +53,8 @@ def index(request):
 
     rendered_page = template.render(context, request)
     return HttpResponse(rendered_page)
+
+
+def place_page(request, place_id):
+    place = get_object_or_404(Place, pk=place_id)
+    return HttpResponse(place.title)
