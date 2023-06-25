@@ -1,12 +1,8 @@
-import json
-import os
-
 from django.http import HttpResponse, JsonResponse
 from django.template import loader
 from django.shortcuts import get_object_or_404
 
 from places.models import Place
-from where_to_go.settings import BASE_DIR
 
 
 def index(request):
@@ -49,7 +45,7 @@ def place_page(request, place_id):
 def serialize_place(place):
     return {
         'title': place.title,
-        'imgs': [place.imgs.image.url],
+        'imgs': [img.image.url for img in place.imgs.all()],
         'description_short': place.description_short,
         'description_long': place.description_long,
         'coordinates': {
