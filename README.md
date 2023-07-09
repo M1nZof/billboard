@@ -25,3 +25,7 @@ python manage.py migrate
 ```commandline
 python manage.py runserver
 ```
+
+## Демонстрация задеплоенного сайта
+
+`http://m1nz.pythonanywhere.com/`
