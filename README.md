@@ -26,6 +26,4 @@ python manage.py migrate
 python manage.py runserver
 ```
 
-## Демонстрация задеплоенного сайта
-
-`http://m1nz.pythonanywhere.com/`
+## [Демонстрация задеплоенного сайта](http://m1nz.pythonanywhere.com/)
