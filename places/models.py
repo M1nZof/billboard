@@ -11,8 +11,8 @@ class PlaceImage(models.Model):
 
 
 class Place(models.Model):
-    title = models.CharField(max_length=200, verbose_name='Название локации')
-    imgs = models.ManyToManyField(PlaceImage, null=True, verbose_name='Картинки локации')
+    title = models.CharField(max_length=200, verbose_name='Название локации', unique=True)
+    imgs = models.ManyToManyField(PlaceImage, verbose_name='Картинки локации')
     description_short = models.CharField(max_length=200, verbose_name='Короткое описание')
     description_long = HTMLField()
     lng = models.FloatField(verbose_name='Долгота')
