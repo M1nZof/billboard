@@ -20,10 +20,6 @@ class PlaceImageInline(admin.TabularInline):
 @admin.register(Place)
 class PlaceAdmin(admin.ModelAdmin):
     inlines = [PlaceImageInline, ]
-    fieldsets = [
-        (None, {'fields': ['title', 'description_short', 'description_long', 'lng', 'lat']}),
-        ('Фотографии', {'fields': ['slug']})
-    ]
     list_display = ('title', )
 
 
