@@ -1,4 +1,6 @@
 .idea/
 env/
 media/
+
+.env
 *.sqlite3
