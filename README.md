@@ -8,6 +8,23 @@
 
 ![Пример места.png](https://github.com/M1nZof/billboard/blob/main/screenshots/%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BC%D0%B5%D1%81%D1%82%D0%B0.png)
 
+## Переменные окружения
+
+Переменные окружения:
+
+- `SECRET_KEY` - секретный ключ от Django ([см. документацию](https://docs.djangoproject.com/en/4.2/ref/settings/#std-setting-SECRET_KEY))
+- `DEBUG` - режим отладки. Передается в виде булевого значение ([см. документацию](https://docs.djangoproject.com/en/4.2/ref/settings/#std-setting-DEBUG))
+- `ALLOWED_HOSTS` - допустимые для Django хосты/домены ([см. документацию](https://docs.djangoproject.com/en/4.2/ref/settings/#allowed-hosts))
+- `DB_NAME` - имя базы данных (с расширением)
+
+`Пример:`
+```python
+export SECRET_KEY=usabdfjhsb12413248:asdnijsdfnbi90359
+export DEBUG=true
+export ALLOWED_HOSTS=*
+export DB_NAME=db_name.sqlite3
+```
+
 ## Установка зависимостей
 
 ```commandline
@@ -25,9 +42,6 @@ python manage.py migrate
 ```commandline
 python manage.py runserver
 ```
-
-## [Демонстрация задеплоенного сайта](http://m1nz.pythonanywhere.com/)
-
 
 ## Кастомный метод для добавления новых объектов в базу данных
 
@@ -53,3 +67,5 @@ python manage.py load_place link_to_json
     }
 }
 ```
+
+## [Демонстрация задеплоенного сайта](http://m1nz.pythonanywhere.com/)
