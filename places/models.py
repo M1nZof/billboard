@@ -6,7 +6,7 @@ class PlaceImage(models.Model):
     image = models.ImageField(verbose_name='Картинка')
 
     def __str__(self):
-        return self.pk
+        return f'{self.pk}'
 
 
 class Place(models.Model):
