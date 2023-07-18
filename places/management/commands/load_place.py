@@ -25,7 +25,7 @@ class Command(BaseCommand):
             imgs = result['imgs']
 
             place, is_added = Place.objects.get_or_create(title=title, description_short=description_short,
-                                                          description_long=description_long, lng=lng, lat=lat, slug='')
+                                                          description_long=description_long, lng=lng, lat=lat)
 
             for img in imgs:
                 response = requests.get(img)
@@ -34,7 +34,7 @@ class Command(BaseCommand):
                         path_to_image = os.path.join(MEDIA_ROOT, (img.split('/')[-1]))
                         with open(path_to_image, 'wb') as file:
                             file.write(response.content)
-                        image_object = PlaceImage(description=title)
+                        image_object = PlaceImage()
                         image_object.image = path_to_image
                         image_object.save()
                         place.imgs.add(image_object)
