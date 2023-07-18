@@ -3,11 +3,10 @@ from tinymce.models import HTMLField
 
 
 class PlaceImage(models.Model):
-    description = models.CharField(max_length=200, verbose_name='Описание картинки')
     image = models.ImageField(verbose_name='Картинка')
 
     def __str__(self):
-        return f'{self.pk} {self.description}'
+        return self.pk
 
 
 class Place(models.Model):
@@ -17,4 +16,3 @@ class Place(models.Model):
     description_long = HTMLField(null=True, blank=True)
     lng = models.FloatField(verbose_name='Долгота')
     lat = models.FloatField(verbose_name='Широта')
-    slug = models.CharField(max_length=200, verbose_name='Латинизированное название локации')
