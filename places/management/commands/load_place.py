@@ -27,17 +27,15 @@ class Command(BaseCommand):
             place, is_added = Place.objects.get_or_create(title=title, description_short=description_short,
                                                           description_long=description_long, lng=lng, lat=lat)
 
-            for img in imgs:
+            for i, img in enumerate(imgs, start=1):
                 response = requests.get(img)
                 if response.reason == 'OK':
                     try:
                         path_to_image = os.path.join(MEDIA_ROOT, (img.split('/')[-1]))
                         with open(path_to_image, 'wb') as file:
                             file.write(response.content)
-                        image_object = PlaceImage()
-                        image_object.image = path_to_image
+                        image_object = PlaceImage(image=path_to_image, place=place, order=i)
                         image_object.save()
-                        place.imgs.add(image_object)
                     except Exception as e:
                         print(f'Error while adding photos to DB: {e}')
                 else:

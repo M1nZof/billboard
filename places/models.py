@@ -17,6 +17,10 @@ class PlaceImage(models.Model):
     image = models.ImageField(verbose_name='Картинка')
     place = models.ForeignKey(Place, verbose_name='Локация', on_delete=models.SET_NULL, null=True,
                               related_query_name='images', related_name='image')
+    order = models.PositiveIntegerField('Позиция', default=0)
 
     def __str__(self):
         return f'{self.pk}'
+
+    class Meta:
+        ordering = ['order']
