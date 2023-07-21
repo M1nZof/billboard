@@ -8,12 +8,10 @@ class PlaceImageInline(admin.TabularInline):
     model = PlaceImage
     extra = 0
 
-    fields = ['show_image', ]
     readonly_fields = ['show_image']
 
     def show_image(self, obj):
-        image_object = PlaceImage.objects.filter(pk=obj.placeimage_id).first()
-        return format_html(f'<img src="{image_object.image.url}" height="200">')
+        return format_html(f'<img src="{obj.image.url}" height="200">')
     show_image.short_description = 'Фотографии'
 
 
