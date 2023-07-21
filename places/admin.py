@@ -5,7 +5,7 @@ from places.models import Place, PlaceImage
 
 
 class PlaceImageInline(admin.TabularInline):
-    model = Place.imgs.through
+    model = PlaceImage
     extra = 0
 
     fields = ['show_image', ]

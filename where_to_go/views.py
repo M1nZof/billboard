@@ -45,7 +45,7 @@ def place_page(request, place_id):
 def serialize_place(place):
     return {
         'title': place.title,
-        'imgs': [img.image.url for img in place.imgs.all()],
+        'imgs': [place.image.url for place in place.image.all()],
         'description_short': place.description_short,
         'description_long': place.description_long,
         'coordinates': {
