@@ -19,9 +19,9 @@ class PlaceImageInline(SortableStackedInline):
 @admin.register(Place)
 class PlaceAdmin(SortableAdminBase, admin.ModelAdmin):
     inlines = [PlaceImageInline, ]
-    list_display = ('title', )
+    list_display = ('title', 'description_short')
 
 
 @admin.register(PlaceImage)
 class PlaceImageAdmin(admin.ModelAdmin):
-    list_display = ('pk', )
+    list_display = ('pk', 'place')

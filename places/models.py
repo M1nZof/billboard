@@ -10,7 +10,7 @@ class Place(models.Model):
     lat = models.FloatField(verbose_name='Широта')
 
     def __str__(self):
-        return f'{self.pk} | {self.title}'
+        return f'ID: {self.pk} | Локация: {self.title}'
 
 
 class PlaceImage(models.Model):
@@ -20,7 +20,7 @@ class PlaceImage(models.Model):
     order = models.PositiveIntegerField('Позиция', default=0, blank=True)
 
     def __str__(self):
-        return f'{self.pk}'
+        return f'ID: {self.pk} | Локация: {self.place.title}'
 
     class Meta:
         ordering = ['order']
