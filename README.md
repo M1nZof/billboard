@@ -2,6 +2,8 @@
 
 Интерактивный сайт с картой интересных мест
 
+[Демонстрация задеплоенного сайта](http://m1nz.pythonanywhere.com/)
+
 ![Пример карты.png](https://github.com/M1nZof/billboard/blob/main/screenshots/%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D0%BA%D0%B0%D1%80%D1%82%D1%8B.png)
 
 ## Пример места
@@ -67,5 +69,3 @@ python manage.py load_place link_to_json
     }
 }
 ```
-
-## [Демонстрация задеплоенного сайта](http://m1nz.pythonanywhere.com/)
