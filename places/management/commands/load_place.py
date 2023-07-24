@@ -19,8 +19,11 @@ class Command(BaseCommand):
         response = requests.get(options['link_to_json'])
         response.raise_for_status()
         result = response.json()
-        title, description_short, description_long, coordinates = result['title'], result['description_short'], \
-                                                                  result['description_long'], result['coordinates']
+
+        title = result['title']
+        description_short = result['description_short']
+        description_long = result['description_long']
+        coordinates = result['coordinates']
         lng, lat = coordinates['lng'], coordinates['lat']
         imgs = result['imgs']
 
