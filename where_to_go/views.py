@@ -1,14 +1,11 @@
-from django.http import HttpResponse, JsonResponse
-from django.template import loader
-from django.shortcuts import get_object_or_404
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 
 from places.models import Place
 
 
 def index(request):
-    template = loader.get_template('index.html')
-
     places = Place.objects.all()
     rendered_places = {
         'data':
@@ -32,10 +29,7 @@ def index(request):
         }
         rendered_places['data']['features'].append(place_properties)
 
-    context = rendered_places
-
-    rendered_page = template.render(context, request)
-    return HttpResponse(rendered_page)
+    return render(request, 'index.html', context=rendered_places)
 
 
 def place_page(request, place_id):
