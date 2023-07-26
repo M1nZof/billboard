@@ -27,8 +27,10 @@ class Command(BaseCommand):
         lng, lat = coordinates['lng'], coordinates['lat']
         imgs = result['imgs']
 
-        place, is_added = Place.objects.get_or_create(title=title, description_short=description_short,
-                                                      description_long=description_long, lng=lng, lat=lat)
+        place, is_added = Place.objects.get_or_create(title=title, lng=lng, lat=lat, defaults={
+            'description_short': description_short,
+            'description_long': description_long,
+        })
 
         for i, img in enumerate(imgs, start=1):
             response = requests.get(img)
