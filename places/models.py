@@ -16,7 +16,7 @@ class Place(models.Model):
 class PlaceImage(models.Model):
     image = models.ImageField(verbose_name='Картинка')
     place = models.ForeignKey(Place, verbose_name='Локация', on_delete=models.CASCADE,
-                              related_query_name='images', related_name='image')
+                              related_name='images', related_query_name='image')
     order = models.PositiveIntegerField('Позиция', default=0, blank=True)
 
     def __str__(self):
