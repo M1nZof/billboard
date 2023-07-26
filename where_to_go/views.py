@@ -7,14 +7,8 @@ from places.models import Place
 
 def index(request):
     places = Place.objects.all()
-    rendered_places = {
-        'data':
-            {
-                "type": "FeatureCollection",
-                "features": []
-            }
-    }
-    for counter, place in enumerate(places):
+    features = []
+    for place in places:
         place_properties = {
             'type': 'Feature',
             'geometry': {
@@ -27,7 +21,14 @@ def index(request):
                 'detailsUrl': reverse('places', args=(place.pk, ))
             }
         }
-        rendered_places['data']['features'].append(place_properties)
+        features.append(place_properties)
+    rendered_places = {
+        'data':
+            {
+                "type": "FeatureCollection",
+                "features": features
+            }
+    }
 
     return render(request, 'index.html', context=rendered_places)
 
