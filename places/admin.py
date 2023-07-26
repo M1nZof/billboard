@@ -13,7 +13,7 @@ class PlaceImageInline(SortableStackedInline):
     readonly_fields = ['show_image']
 
     def show_image(self, obj):
-        return format_html('<img src="{}" height="200">', mark_safe(obj.image.url))
+        return format_html('<img src="{}" height="200">', obj.image.url)
     show_image.short_description = 'Превью картинки'
 
 
